@@ -2,6 +2,7 @@ package chapter12;
 /**
  * an implementation of BinarySearchTree
  * 
+ * @author 建苍
  *
  */
 public class BinarySearchTree {
@@ -15,6 +16,7 @@ public class BinarySearchTree {
 		bst.display(28);
 	}
 	
+	//因为是用类似链表的方式来表示的树，所以并不需要在其中重新定义一个Node[]
 	public Node root = null;
 	
 	public BinarySearchTree(Node root) {
@@ -71,10 +73,12 @@ public class BinarySearchTree {
 		return x;
 	}
 	/**
+	 * 简单粗暴 brute force
 	 * @param x
 	 * @return
 	 */
 	public static Node max(Node x){
+		//为什么x不去做null判断？是因为调用的时候会有nullPointer保护么
 		while(x.right!=null){
 			x = x.right;
 		}
@@ -87,6 +91,7 @@ public class BinarySearchTree {
 		return x;
 	}
 	/**
+	 * 找x的后继节点
 	 * @param x
 	 * @return
 	 */
@@ -94,6 +99,7 @@ public class BinarySearchTree {
 		if(x.right!=null){
 			return min(x.right); 
 		}
+		//就算x是root也能返回正常值
 		Node y = x.parent;
 		while(y!=null&&y.left!=x){
 			x = y;
@@ -102,6 +108,7 @@ public class BinarySearchTree {
 		return y;
 	}
 	/**
+	 * 插入操作，要遍历到树的页节点然后替换他
 	 * @param x
 	 */
 	public void insert(Node x){

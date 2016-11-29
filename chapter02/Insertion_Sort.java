@@ -3,8 +3,11 @@ package chapter02;
 import java.util.Arrays;
 
 /**
+ * 将A[j]插入到排序好的A[j-1]中去 insert A[j] into the sorted sequence A[j-1]
  * 
+ * 最坏情况运行时间Θ(n^2)  平均运行时间Θ(n^2)
  * 
+ * @author 建苍
  * 
  */
 public class Insertion_Sort {

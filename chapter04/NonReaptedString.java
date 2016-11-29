@@ -6,6 +6,7 @@ import java.util.Hashtable;
  * Method One use hashMap.
  * Method Two use array. 
  * 
+ * @author 建苍
  *
  */
 public class NonReaptedString {
@@ -52,11 +53,13 @@ public class NonReaptedString {
 		 */
 		return null;
 	}
+	//现在都会自动拆装包了好嘛
 	public static Character findFirstNonreaptedChar(String str){
 		Hashtable<Character,Integer> hasht = new Hashtable<Character,Integer>();
 		//I'm just a temp parameter
 		Character chs;
 		Integer inte;
+		//插入hashTable的逻辑判断完了
 		for(int i=0;i<str.length();i++){
 			inte = hasht.get(str.charAt(i));
 			if(inte == null){
@@ -65,6 +68,7 @@ public class NonReaptedString {
 				hasht.put(str.charAt(i),inte+1);
 			}
 		}
+		//然后循环一边看看是不是有唯一值
 		for(int i=0;i<str.length();i++){
 			if(hasht.get(str.charAt(i)) == 1){
 				return str.charAt(i);
@@ -73,6 +77,7 @@ public class NonReaptedString {
 		return null;
 	}
 
+	//biubility的来了
 	public static Character findFirstNonreaptedChar2(String str){
 		Hashtable<Character,Object> ht = new Hashtable<Character,Object>();
 		Object o1 = new Object();
@@ -86,7 +91,9 @@ public class NonReaptedString {
 			}else if(o == o1){
 				ht.put(c, o2);
 			}
+			//超过两次不去乱他
 		}
+		//看结果
 		for(int i=0;i<str.length();i++){
 			c = str.charAt(i);
 			if(ht.get(c)==o1){
